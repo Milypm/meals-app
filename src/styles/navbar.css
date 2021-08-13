@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.navbar {
+  display: flex;
+  height: 130px;
+  color: #fff;
+  background: rgb(50, 96, 170);
+  font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.title-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* .navbar img {
+  width: 357.25px;
+  height: 78px;
+} */
+
+.filter-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 50px;
+  width: 40%;
+}
+
+.label-filter {
+  margin-right: 5px;
+}
+
+.select-filter {
+  background: transparent;
+  border-radius: 8px;
+  background: #fff;
+  border: none;
+  padding: 3px 10px 3px 5px;
+  opacity: 0.5;
+}

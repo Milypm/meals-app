@@ -1,9 +1,9 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import '../styles/navbar.css';
 
 const Filter = (props) => {
   const { handleCatChange, currentValue } = props;
-  categoryFilter: [
+  categoryFilter = [
     'Beef',
     'Breakfast',
     'Chicken',
