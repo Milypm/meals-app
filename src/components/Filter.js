@@ -3,7 +3,7 @@ import '../styles/navbar.css';
 
 const Filter = (props) => {
   const { handleCatChange, currentValue } = props;
-  categoryFilter = [
+  const categoryFilter = [
     'Beef',
     'Breakfast',
     'Chicken',
@@ -21,7 +21,7 @@ const Filter = (props) => {
   ];
   return (
     <form className="filter-form">
-      <label className="label-filter">Category</label>
+      <label className="label-filter">Category:</label>
       <select className="select-filter" id="category" name="category" onChange={(e) => handleCatChange(e)} value={currentValue}>
         {
           categoryFilter.map((cat) => (

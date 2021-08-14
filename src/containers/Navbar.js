@@ -1,5 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getByCategory } from '../actions/index';
 import Filter from '../components/Filter';
@@ -13,19 +14,20 @@ const Navbar = (props) => {
   return (
     <nav className="navbar">
       <div className="title-filters">
-        {/* <img src={pokeFetch} alt="PokeFetch Logo" /> */}
         <h3>MealsApp!</h3>
+        <Link to="/">Home</Link>
         <Filter
           handleCatChange={handleCatChange}
-          currentValue={category}  
+          currentValue={category}
         />
       </div>
     </nav>
   );
 };
-// Navbar.propTypes = {
-//   getByCategory: PropTypes.func.isRequired,
-// };
+Navbar.propTypes = {
+  category: PropTypes.string.isRequired,
+  getByCategory: PropTypes.func.isRequired,
+};
 const mapStateToProps = (state) => ({
   category: state.category,
 });

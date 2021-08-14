@@ -1,21 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import fetchMeals from '../API/api';
 import Navbar from './Navbar';
 import Loading from '../components/Loading';
+import Meal from '../components/Meal';
 import '../styles/home.css';
 
 const Home = (props) => {
   const { category } = props;
   const [meals, setMeals] = useState([]);
-  const getAllMeals = async () => {
-    const fetched = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?f=a', { mode: 'cors' });
-    const [meals] = await fetched.json();
-    setMeals(meals);
+  const getAllMeals = () => {
+    const mealsArr = [];
+    const abc = 'abcdefghijklmnoprstvwy'.split('');
+    abc.forEach((el) => {
+      fetchMeals(el).then((data) => {
+        mealsArr.push(data);
+      });
+    });
+    setMeals(mealsArr);
+  };
+  const getMealByCateg = async () => {
+    const fetched = await fetch(`www.themealdb.com/api/json/v1/1/filter.php?c=${category}`, { mode: 'cors' });
+    const data = await fetched.json();
+    setMeals(data.meals);
   };
   useEffect(() => {
     getAllMeals();
   }, []);
+  useEffect(() => {
+    getMealByCateg();
+  }, [category]);
   return (
     <div className="home">
       <Navbar />
@@ -25,8 +40,11 @@ const Home = (props) => {
           {
             meals.length === 0
               ? <Loading />
-              : meals.map((mealObj) => (
-                <Meal key={mealObj.idMeal} mealObj={mealObj} />
+              : meals.map((mealArray) => (
+                mealArray.forEach((el) => {
+                  console.log(el);
+                    <Meal key={el.idMeal} mealObj={el} />;
+                })
               ))
           }
         </div>
