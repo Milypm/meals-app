@@ -1,50 +1,60 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import fetchMeals from '../API/api';
+import { fetchMeals, getMealByCateg } from '../API/api';
 import Navbar from './Navbar';
 import Loading from '../components/Loading';
 import Meal from '../components/Meal';
+import { passDetails } from '../actions/index';
 import '../styles/home.css';
 
 const Home = (props) => {
   const { category } = props;
+  console.log('category', category);
   const [meals, setMeals] = useState([]);
-  const getAllMeals = () => {
-    const mealsArr = [];
-    const abc = 'abcdefghijklmnoprstvwy'.split('');
+  const abc = 'abcdefghijklmnoprstvwy'.split('');
+  const mealsArr = [];
+  const openMealDetails = (mealObj) => {
+    props.passDetails(mealObj);
+  };
+  useEffect(() => {
     abc.forEach((el) => {
       fetchMeals(el).then((data) => {
-        mealsArr.push(data);
+        data.map((ob) => (
+          mealsArr.push(ob)
+        ));
       });
     });
-    setMeals(mealsArr);
-  };
-  const getMealByCateg = async () => {
-    const fetched = await fetch(`www.themealdb.com/api/json/v1/1/filter.php?c=${category}`, { mode: 'cors' });
-    const data = await fetched.json();
-    setMeals(data.meals);
-  };
-  useEffect(() => {
-    getAllMeals();
+    setMeals(mealsArr.sort());
   }, []);
   useEffect(() => {
-    getMealByCateg();
+    getMealByCateg(category).then((data) => {
+      data.map((ob) => (
+        mealsArr.push(ob)
+      ));
+    });
+    setMeals(mealsArr.sort());
   }, [category]);
+  console.log('render', meals);
   return (
     <div className="home">
       <Navbar />
       <section className="meals-list">
-        <h1>Home</h1>
         <div className="meals-div">
           {
             meals.length === 0
               ? <Loading />
-              : meals.map((mealArray) => (
-                mealArray.forEach((el) => {
-                  console.log(el);
-                    <Meal key={el.idMeal} mealObj={el} />;
-                })
+              : meals.map((obj) => (
+                <Meal
+                  key={obj.idMeal}
+                  name={obj.strMeal}
+                  img={obj.strMealThumb}
+                  recipe={obj.strInstructions}
+                  country={obj.strArea}
+                  type={obj.strCategory}
+                  youtube={obj.strYoutube}
+                  openMealDetails={openMealDetails}
+                />
               ))
           }
         </div>
@@ -54,8 +64,14 @@ const Home = (props) => {
 };
 Home.propTypes = {
   category: PropTypes.string.isRequired,
+  passDetails: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({
   category: state.category,
 });
-export default connect(mapStateToProps, null)(Home);
+const mapDispatchToProps = (dispatch) => ({
+  passDetails: (obj) => {
+    dispatch(passDetails(obj));
+  },
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

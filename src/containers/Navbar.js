@@ -8,7 +8,9 @@ import '../styles/navbar.css';
 
 const Navbar = (props) => {
   const { category } = props;
+  console.log('category', category);
   const handleCatChange = (e) => {
+    console.log('filter', e.target.value);
     props.getByCategory(e.target.value);
   };
   return (
@@ -18,7 +20,7 @@ const Navbar = (props) => {
         <Link to="/">Home</Link>
         <Filter
           handleCatChange={handleCatChange}
-          currentValue={category}
+          currentCategory={category}
         />
       </div>
     </nav>

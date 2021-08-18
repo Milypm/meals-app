@@ -2,8 +2,9 @@ import PropTypes from 'prop-types';
 import '../styles/navbar.css';
 
 const Filter = (props) => {
-  const { handleCatChange, currentValue } = props;
+  const { handleCatChange, currentCategory } = props;
   const categoryFilter = [
+    'All',
     'Beef',
     'Breakfast',
     'Chicken',
@@ -22,10 +23,10 @@ const Filter = (props) => {
   return (
     <form className="filter-form">
       <label className="label-filter">Category:</label>
-      <select className="select-filter" id="category" name="category" onChange={(e) => handleCatChange(e)} value={currentValue}>
+      <select className="select-filter" id="category" name="category" onChange={(e) => handleCatChange(e)} value={currentCategory}>
         {
           categoryFilter.map((cat) => (
-            <option key={cat} className="option-filter" value={cat.toLowerCase()}>
+            <option key={cat} className="option-filter" value={cat}>
               {cat}
             </option>
           ))
@@ -36,6 +37,6 @@ const Filter = (props) => {
 };
 Filter.propTypes = {
   handleCatChange: PropTypes.func.isRequired,
-  currentValue: PropTypes.string.isRequired,
+  currentCategory: PropTypes.string.isRequired,
 };
 export default Filter;

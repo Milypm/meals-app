@@ -5,8 +5,15 @@
   display: flex;
   height: 130px;
   color: #fff;
-  background: rgb(50, 96, 170);
+  background: rgb(199, 170, 92);
   font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  margin-right: 50px;
 }
 
 .title-filters {
@@ -21,11 +28,6 @@
   font-family: 'Pacifico', Verdana, Geneva, Tahoma, sans-serif;
   font-size: 40px;
 }
-
-/* .navbar img {
-  width: 357.25px;
-  height: 78px;
-} */
 
 .filter-form {
   display: flex;

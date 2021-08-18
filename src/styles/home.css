@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
-  border: 1px solid red;
+  color: rgb(182, 155, 81);
 }
 
 .meals-list h1 {
@@ -13,21 +13,22 @@
 }
 
 .meals-div {
-  width: 90%;
+  width: 92%;
   display: grid;
   grid-template-columns: auto auto auto;
-  grid-gap: 30px;
+  grid-gap: 50px;
+  margin-top: 50px;
   margin-bottom: 50px;
+  padding: 0 15px;
 }
 
 .loading-div {
-  border: 1px solid red;
+  margin: 0 auto;
   width: 100%;
   height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(50, 96, 170);
   font-size: 20px;
 }
 
@@ -36,14 +37,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgb(218, 84, 84);
-  color: #fff;
+  /* background: rgb(218, 84, 84);
+  color: #fff; */
   border-radius: 40px;
   padding: 20px 15px;
   height: 200px;
 }
 
+.mealObj:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.meal-title {
+  text-align: center;
+  color: rgb(182, 155, 81);
+  font-size: 18px;
+}
+
 .mealObj img {
-  width: 80px;
-  height: 50px;
+  width: 270px;
+  height: 190px;
+  border-radius: 40px;
 }

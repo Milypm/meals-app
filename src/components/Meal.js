@@ -1,19 +1,31 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const Meal = (mealObj) => {
-  console.log('mealObj', mealObj);
-  const { strMeal, strMealThumb } = mealObj;
+const Meal = ({
+  name, img, country, type, recipe, youtube, openMealDetails,
+}) => {
+  const detailsObj = {
+    name,
+    img,
+    country,
+    type,
+    recipe,
+    youtube,
+  };
   return (
-    <div className="mealObj">
-      <h3 className="meal-title">{strMeal}</h3>
-      <img src={strMealThumb} alt={strMeal} />
-    </div>
+    <Link to="/recipe-details" className="mealObj" onClick={() => openMealDetails(detailsObj)}>
+      <h3 className="meal-title">{name}</h3>
+      <img src={img} alt={name} />
+    </Link>
   );
 };
 Meal.propTypes = {
-  mealObj: PropTypes.shape({
-    strMeal: PropTypes.string,
-    strMealThumb: PropTypes.string,
-  }).isRequired,
+  name: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
+  country: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  recipe: PropTypes.string.isRequired,
+  youtube: PropTypes.string.isRequired,
+  openMealDetails: PropTypes.func.isRequired,
 };
 export default Meal;

@@ -5,7 +5,12 @@ const fetchMeals = async (el) => {
   const data = await fetched.json();
   return data.meals;
 };
+const getMealByCateg = async (category) => {
+  const fetched = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`, { mode: 'cors' });
+  const data = await fetched.json();
+  return data.meals;
+};
 fetchMeals.propTypes = {
   el: PropTypes.string.isRequired,
 };
-export default fetchMeals;
+export { fetchMeals, getMealByCateg };
