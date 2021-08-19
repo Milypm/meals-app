@@ -1,0 +1,56 @@
+.mealDetails-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(182, 155, 81);
+}
+
+.mealDetails-section h2 {
+  font-weight: 600;
+}
+
+.mealDetails-title {
+  text-align: center;
+  color: rgb(182, 155, 81);
+  font-size: 23px;
+}
+
+.mealDetails-country {
+  text-align: center;
+  color: rgb(128, 109, 59);
+  font-size: 19px;
+}
+
+.mealDetails-type {
+  text-align: center;
+  color: rgb(128, 109, 59);
+  font-size: 17px;
+}
+
+.mealDetails-recipe {
+  text-align: center;
+  color: rgb(128, 109, 59);
+  font-size: 21px;
+}
+
+.mealDetails-section img {
+  width: 400px;
+  height: 300px;
+  border-radius: 40px;
+}
+
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}

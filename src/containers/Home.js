@@ -10,14 +10,13 @@ import '../styles/home.css';
 
 const Home = (props) => {
   const { category } = props;
-  console.log('category', category);
   const [meals, setMeals] = useState([]);
-  const abc = 'abcdefghijklmnoprstvwy'.split('');
   const mealsArr = [];
   const openMealDetails = (mealObj) => {
     props.passDetails(mealObj);
   };
   useEffect(() => {
+    const abc = 'abcdefghijklmnoprstvwy'.split('');
     abc.forEach((el) => {
       fetchMeals(el).then((data) => {
         data.map((ob) => (
@@ -28,14 +27,15 @@ const Home = (props) => {
     setMeals(mealsArr.sort());
   }, []);
   useEffect(() => {
-    getMealByCateg(category).then((data) => {
-      data.map((ob) => (
-        mealsArr.push(ob)
-      ));
-    });
-    setMeals(mealsArr.sort());
+    if (category !== 'All') {
+      getMealByCateg(category).then((data) => {
+        data.map((ob) => (
+          mealsArr.push(ob)
+        ));
+      });
+      setMeals(mealsArr.sort());
+    }
   }, [category]);
-  console.log('render', meals);
   return (
     <div className="home">
       <Navbar />

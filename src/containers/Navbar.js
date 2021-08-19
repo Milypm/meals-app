@@ -8,9 +8,7 @@ import '../styles/navbar.css';
 
 const Navbar = (props) => {
   const { category } = props;
-  console.log('category', category);
   const handleCatChange = (e) => {
-    console.log('filter', e.target.value);
     props.getByCategory(e.target.value);
   };
   return (
