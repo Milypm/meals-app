@@ -1,6 +1,12 @@
 import types from './types';
 import { fetchMeals, getMealByCateg, getMealDetails } from '../API/api';
 
+export const initialState = {
+  category: 'All',
+  meals: {},
+  details: [],
+};
+
 export const setCategory = (value) => ({ type: types.CATEGORY_FILTER, payload: value });
 
 export const getByCategory = (value) => {
@@ -14,23 +20,23 @@ export const getByCategory = (value) => {
         ));
       });
     });
+    mealsArr.sort();
     return {
-      type: types.CATEGORY_FILTER,
-      payload: mealsArr.sort(),
+      type: types.GET_BY_CATEGORY,
+      payload: mealsArr,
     };
   }
-  getMealByCateg(value).then((data) => {
-    data.map((ob) => (
-      mealsArr.push(ob)
-    ));
-  });
+  const arr = getMealByCateg(value).then((data) => data.sort());
   return {
-    type: types.CATEGORY_FILTER,
-    payload: mealsArr.sort(),
+    type: types.GET_BY_CATEGORY,
+    payload: arr,
   };
 };
 
-export const passDetails = (key) => ({
-  type: types.DETAILS,
-  payload: getMealDetails(key).then((data) => data),
-});
+export const passDetails = (key) => {
+  const arr = getMealDetails(key).then((data) => data.sort());
+  return {
+    type: types.DETAILS,
+    payload: arr,
+  };
+};

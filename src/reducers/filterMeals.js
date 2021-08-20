@@ -1,15 +1,16 @@
 import types from '../actions/types';
 import { initialState } from '../actions/index';
 
-const detailsReducer = (state = initialState, action) => {
+const mealsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.DETAILS:
+    case types.GET_BY_CATEGORY:
+      // console.log(action.payload);
       return {
         ...state,
-        details: action.payload,
+        meals: action.payload,
       };
     default:
       return state;
   }
 };
-export default detailsReducer;
+export default mealsReducer;

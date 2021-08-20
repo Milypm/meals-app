@@ -1,9 +1,5 @@
 import types from '../actions/types';
-
-const initialState = {
-  category: 'All',
-  meals: '',
-};
+import { initialState } from '../actions/index';
 
 const filterReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -11,11 +7,6 @@ const filterReducer = (state = initialState, action) => {
       return {
         ...state,
         category: action.payload,
-      };
-    case types.GET_BY_CATEGORY:
-      return {
-        ...state,
-        meals: action.payload,
       };
     default:
       return state;

@@ -11,19 +11,21 @@ const Home = (props) => {
   const { category, meals } = props;
   useEffect(() => {
     props.getByCategory(category);
-  }, []);
+  }, [category]);
   return (
     <div className="home">
       <Navbar />
       <section className="meals-list">
         <div className="meals-div">
           {
-            meals.length === 0
+            Object.keys(meals).length === 0
               ? <Loading />
-              : meals.map((obj) => (
+              : meals.meals.map((obj) => (
                 <Meal
                   key={obj.idMeal}
+                  id={obj.idMeal}
                   name={obj.strMeal}
+                  img={obj.strMealThumb}
                 />
               ))
           }
@@ -34,7 +36,7 @@ const Home = (props) => {
 };
 Home.propTypes = {
   category: PropTypes.string.isRequired,
-  meals: PropTypes.string.isRequired,
+  meals: PropTypes.objectOf(PropTypes.any).isRequired,
   getByCategory: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({

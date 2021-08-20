@@ -5,17 +5,17 @@ import { passDetails } from '../actions/index';
 
 const Meal = (props) => {
   const {
-    key, name, img, passDetails,
+    id, name, img, passDetails,
   } = props;
   return (
-    <Link to="/recipe-details" className="mealObj" onClick={passDetails(key)}>
+    <Link to="/recipe-details" className="mealObj" onClick={() => passDetails(id)}>
       <h3 className="meal-title">{name}</h3>
       <img src={img} alt={name} />
     </Link>
   );
 };
 Meal.propTypes = {
-  key: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   passDetails: PropTypes.func.isRequired,
