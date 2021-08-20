@@ -1,41 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchMeals, getMealByCateg } from '../API/api';
 import Navbar from './Navbar';
 import Loading from '../components/Loading';
 import Meal from '../components/Meal';
-import { passDetails } from '../actions/index';
+import { getByCategory } from '../actions/index';
 import '../styles/home.css';
 
 const Home = (props) => {
-  const { category } = props;
-  const [meals, setMeals] = useState([]);
-  const mealsArr = [];
-  const openMealDetails = (mealObj) => {
-    props.passDetails(mealObj);
-  };
+  const { category, meals } = props;
   useEffect(() => {
-    const abc = 'abcdefghijklmnoprstvwy'.split('');
-    abc.forEach((el) => {
-      fetchMeals(el).then((data) => {
-        data.map((ob) => (
-          mealsArr.push(ob)
-        ));
-      });
-    });
-    setMeals(mealsArr.sort());
+    props.getByCategory(category);
   }, []);
-  useEffect(() => {
-    if (category !== 'All') {
-      getMealByCateg(category).then((data) => {
-        data.map((ob) => (
-          mealsArr.push(ob)
-        ));
-      });
-      setMeals(mealsArr.sort());
-    }
-  }, [category]);
   return (
     <div className="home">
       <Navbar />
@@ -48,12 +24,6 @@ const Home = (props) => {
                 <Meal
                   key={obj.idMeal}
                   name={obj.strMeal}
-                  img={obj.strMealThumb}
-                  recipe={obj.strInstructions}
-                  country={obj.strArea}
-                  type={obj.strCategory}
-                  youtube={obj.strYoutube}
-                  openMealDetails={openMealDetails}
                 />
               ))
           }
@@ -64,14 +34,16 @@ const Home = (props) => {
 };
 Home.propTypes = {
   category: PropTypes.string.isRequired,
-  passDetails: PropTypes.func.isRequired,
+  meals: PropTypes.string.isRequired,
+  getByCategory: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({
   category: state.category,
+  meals: state.meals,
 });
 const mapDispatchToProps = (dispatch) => ({
-  passDetails: (obj) => {
-    dispatch(passDetails(obj));
+  getByCategory: (value) => {
+    dispatch(getByCategory(value));
   },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

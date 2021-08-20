@@ -1,31 +1,28 @@
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { passDetails } from '../actions/index';
 
-const Meal = ({
-  name, img, country, type, recipe, youtube, openMealDetails,
-}) => {
-  const detailsObj = {
-    name,
-    img,
-    country,
-    type,
-    recipe,
-    youtube,
-  };
+const Meal = (props) => {
+  const {
+    key, name, img, passDetails,
+  } = props;
   return (
-    <Link to="/recipe-details" className="mealObj" onClick={() => openMealDetails(detailsObj)}>
+    <Link to="/recipe-details" className="mealObj" onClick={passDetails(key)}>
       <h3 className="meal-title">{name}</h3>
       <img src={img} alt={name} />
     </Link>
   );
 };
 Meal.propTypes = {
+  key: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
-  country: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  recipe: PropTypes.string.isRequired,
-  youtube: PropTypes.string.isRequired,
-  openMealDetails: PropTypes.func.isRequired,
+  passDetails: PropTypes.func.isRequired,
 };
-export default Meal;
+const mapDispatchToProps = (dispatch) => ({
+  passDetails: (key) => {
+    dispatch(passDetails(key));
+  },
+});
+export default connect(null, mapDispatchToProps)(Meal);

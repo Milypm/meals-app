@@ -10,7 +10,12 @@ const getMealByCateg = async (category) => {
   const data = await fetched.json();
   return data.meals;
 };
+const getMealDetails = async (id) => {
+  const fetched = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`, { mode: 'cors' });
+  const data = await fetched.json();
+  return data.meals;
+};
 fetchMeals.propTypes = {
   el: PropTypes.string.isRequired,
 };
-export { fetchMeals, getMealByCateg };
+export { fetchMeals, getMealByCateg, getMealDetails };

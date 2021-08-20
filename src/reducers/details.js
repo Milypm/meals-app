@@ -1,13 +1,16 @@
-import { initialState } from '../actions';
 import types from '../actions/types';
 
-const detailsReducer = (state = initialState.details, action) => {
+const initialState = {
+  details: '',
+};
+
+const detailsReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.DETAILS:
-      const {
-        name, img, country, type, recipe, youtube,
-      } = action.payload;
-      return update();
+      return {
+        ...state,
+        details: action.payload,
+      };
     default:
       return state;
   }
