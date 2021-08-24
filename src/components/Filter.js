@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { setCategory, getByCategory } from '../actions/index';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCategory } from '../actions/index';
 import '../styles/navbar.css';
 
-const Filter = (props) => {
-  const { category } = props;
+const Filter = () => {
+  const dispatch = useDispatch();
+  const filterCategory = useSelector((state) => state.filterCategory);
   const categoryFilter = [
     'All',
     'Beef',
@@ -22,14 +22,10 @@ const Filter = (props) => {
     'Vegan',
     'Vegetarian',
   ];
-  const onChange = (e) => {
-    props.getByCategory(e.target.value);
-    props.setCategory(e.target.value);
-  };
   return (
     <form className="filter-form">
       <label className="label-filter">Category:</label>
-      <select className="select-filter" id="category" name="category" onChange={(e) => onChange(e)} value={category}>
+      <select className="select-filter" id="category" name="category" onChange={(e) => dispatch(setCategory(e.target.value))} value={filterCategory}>
         {
           categoryFilter.map((cat) => (
             <option key={cat} className="option-filter" value={cat}>
@@ -41,20 +37,20 @@ const Filter = (props) => {
     </form>
   );
 };
-Filter.propTypes = {
-  setCategory: PropTypes.func.isRequired,
-  getByCategory: PropTypes.func.isRequired,
-  category: PropTypes.string.isRequired,
-};
-const mapStateToProps = (state) => ({
-  category: state.category,
-});
-const mapDispatchToProps = (dispatch) => ({
-  setCategory: (value) => {
-    dispatch(setCategory(value));
-  },
-  getByCategory: (value) => {
-    dispatch(getByCategory(value));
-  },
-});
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+// Filter.propTypes = {
+//   setCategory: PropTypes.func.isRequired,
+//   getByCategory: PropTypes.func.isRequired,
+//   category: PropTypes.string.isRequired,
+// };
+// const mapStateToProps = (state) => ({
+//   category: state.category,
+// });
+// const mapDispatchToProps = (dispatch) => ({
+//   setCategory: (value) => {
+//     dispatch(setCategory(value));
+//   },
+//   getByCategory: (value) => {
+//     dispatch(getByCategory(value));
+//   },
+// });
+export default Filter;

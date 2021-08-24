@@ -1,7 +1,6 @@
 import types from '../actions/types';
-import { initialState } from '../actions/index';
 
-const filterReducer = (state = initialState, action) => {
+const filterReducer = (state = { category: 'All' }, action) => {
   switch (action.type) {
     case types.CATEGORY_FILTER:
       return {

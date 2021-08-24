@@ -5,7 +5,7 @@ import { passDetails } from '../actions/index';
 
 const Meal = (props) => {
   const {
-    id, name, img, passDetails,
+    id, name, img,
   } = props;
   return (
     <Link to="/recipe-details" className="mealObj" onClick={() => passDetails(id)}>
@@ -18,7 +18,7 @@ Meal.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
-  passDetails: PropTypes.func.isRequired,
+  // passDetails: PropTypes.func.isRequired,
 };
 const mapDispatchToProps = (dispatch) => ({
   passDetails: (key) => {
