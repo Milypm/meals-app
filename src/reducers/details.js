@@ -1,12 +1,12 @@
-import types from '../actions/types';
+import { DETAILS_REQUEST, DETAILS_SUCCESS, DETAILS_FAIL } from '../actions/types';
 
 const detailsListReducer = (state = { details: [] }, action) => {
   switch (action.type) {
-    case types.MEALS_REQUEST:
+    case DETAILS_REQUEST:
       return { loading: true, details: [] };
-    case types.MEALS_SUCCESS:
+    case DETAILS_SUCCESS:
       return { loading: false, details: action.payload };
-    case types.MEALS_FAIL:
+    case DETAILS_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

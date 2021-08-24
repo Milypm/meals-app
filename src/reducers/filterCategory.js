@@ -1,8 +1,8 @@
-import types from '../actions/types';
+import { CATEGORY_FILTER } from '../actions/types';
 
 const filterReducer = (state = { category: 'All' }, action) => {
   switch (action.type) {
-    case types.CATEGORY_FILTER:
+    case CATEGORY_FILTER:
       return {
         ...state,
         category: action.payload,

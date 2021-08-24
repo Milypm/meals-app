@@ -8,41 +8,37 @@ import '../styles/home.css';
 
 const Home = () => {
   const dispatch = useDispatch();
-  // const filterCategory = useSelector((state) => state.filterCategory);
-  const mealsList = useSelector((state) => state.mealsList);
-  const { loading, error, meals } = mealsList;
-  console.log('meals', meals);
-  const display = () => {
-    if (loading) {
-      <Loading />;
-    } else if (error) {
-      <h3>{error}</h3>;
-    } else {
-      meals.map((obj) => {
-        console.log(obj.strMeal);
-        return (
-          <Meal
-            key={obj.idMeal}
-            id={obj.idMeal}
-            name={obj.strMeal}
-            img={obj.strMealThumb}
-          />
-        );
-      });
-    }
-  };
+  const filterCategory = useSelector((state) => state.filterCategory);
+  const mealsList = filterCategory === 'All' ? useSelector((state) => state.allMealsList)
+    : useSelector((state) => state.categMealsList);
+  const { loading, meals, error } = mealsList;
+  console.log('loading', loading, meals);
+  const loadingOrError = () => (
+    loading ? <Loading /> : <h3>{error}</h3>
+  );
   useEffect(() => {
     dispatch(getAllMeals());
-  }, []);
+  }, [dispatch]);
   // useEffect(() => {
   //   dispatch(getByCategory(filterCategory));
-  // }, [dispatch, filterCategory]);
+  // }, [filterCategory]);
   return (
     <div className="home">
       <Navbar />
       <section className="meals-list">
         <div className="meals-div">
-          {display()}
+          {
+            meals.length > 0
+              ? meals.map((obj) => (
+                <Meal
+                  key={obj.idMeal}
+                  id={obj.idMeal}
+                  name={obj.strMeal}
+                  img={obj.strMealThumb}
+                />
+              ))
+              : loadingOrError()
+          }
         </div>
       </section>
     </div>

@@ -2,16 +2,20 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import filterReducer from './reducers/filterCategory';
-import mealsListReducer from './reducers/filterMeals';
+import allMealsListReducer from './reducers/filterAllMeals';
+import categMealsListReducer from './reducers/filterCategMeals';
 import detailsListReducer from './reducers/details';
 
 const rootReducer = combineReducers({
   filterCategory: filterReducer,
-  mealsList: mealsListReducer,
+  allMealsList: allMealsListReducer,
+  categMealsList: categMealsListReducer,
   detailsList: detailsListReducer,
 });
 
-const initialState = {};
+const initialState = {
+  filterCategory: 'All',
+};
 
 const middleware = [thunk];
 
