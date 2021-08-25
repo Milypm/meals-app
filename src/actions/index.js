@@ -16,7 +16,6 @@ export const setCategory = (value) => ({ type: CATEGORY_FILTER, payload: value }
 
 export const getAllMeals = () => async (dispatch) => {
   try {
-    console.log('dispatch');
     const mealsArr = [];
     dispatch({ type: ALL_MEALS_REQUEST });
     // const res = await fetchMeals('m');
@@ -42,9 +41,10 @@ export const getAllMeals = () => async (dispatch) => {
 
 export const getByCategory = (value) => async (dispatch) => {
   try {
-    console.log('dispatch');
+    console.log('dispatch', value);
     dispatch({ type: CATEGORY_MEALS_REQUEST });
-    const arr = getMealByCateg(value);
+    const arr = await getMealByCateg(value);
+    // console.log(arr);
     arr.sort();
     dispatch({
       type: CATEGORY_MEALS_SUCCESS,

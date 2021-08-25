@@ -25,7 +25,7 @@ const Filter = () => {
   return (
     <form className="filter-form">
       <label className="label-filter">Category:</label>
-      <select className="select-filter" id="category" name="category" onChange={(e) => dispatch(setCategory(e.target.value))} value={filterCategory}>
+      <select className="select-filter" id="category" name="category" onChange={(e) => dispatch(setCategory(e.target.value))} value={filterCategory.category}>
         {
           categoryFilter.map((cat) => (
             <option key={cat} className="option-filter" value={cat}>
@@ -37,20 +37,4 @@ const Filter = () => {
     </form>
   );
 };
-// Filter.propTypes = {
-//   setCategory: PropTypes.func.isRequired,
-//   getByCategory: PropTypes.func.isRequired,
-//   category: PropTypes.string.isRequired,
-// };
-// const mapStateToProps = (state) => ({
-//   category: state.category,
-// });
-// const mapDispatchToProps = (dispatch) => ({
-//   setCategory: (value) => {
-//     dispatch(setCategory(value));
-//   },
-//   getByCategory: (value) => {
-//     dispatch(getByCategory(value));
-//   },
-// });
 export default Filter;
