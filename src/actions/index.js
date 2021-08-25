@@ -14,19 +14,20 @@ import { fetchMeals, getMealByCateg, getMealDetails } from '../API/api';
 
 export const setCategory = (value) => ({ type: CATEGORY_FILTER, payload: value });
 
-export const getAllMeals = () => (dispatch) => {
+export const getAllMeals = () => async (dispatch) => {
   try {
     console.log('dispatch');
     const mealsArr = [];
     dispatch({ type: ALL_MEALS_REQUEST });
+    // const res = await fetchMeals('m');
     const abc = 'abcdefghijklmnoprstvwy'.split('');
-    abc.forEach((el) => {
+    abc.map((el) => (
       fetchMeals(el).then((data) => {
         data.map((ob) => (
           mealsArr.push(ob)
         ));
-      });
-    });
+      })
+    ));
     mealsArr.sort();
     dispatch({ type: ALL_MEALS_SUCCESS, payload: mealsArr });
   } catch (error) {
@@ -41,6 +42,7 @@ export const getAllMeals = () => (dispatch) => {
 
 export const getByCategory = (value) => async (dispatch) => {
   try {
+    console.log('dispatch');
     dispatch({ type: CATEGORY_MEALS_REQUEST });
     const arr = getMealByCateg(value);
     arr.sort();

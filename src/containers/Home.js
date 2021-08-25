@@ -1,47 +1,34 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllMeals } from '../actions/index';
-import Navbar from './Navbar';
-import Loading from '../components/Loading';
+// import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+// import { getByCategory } from '../actions/index';
 import Meal from '../components/Meal';
 import '../styles/home.css';
 
 const Home = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const filterCategory = useSelector((state) => state.filterCategory);
   const mealsList = filterCategory === 'All' ? useSelector((state) => state.allMealsList)
     : useSelector((state) => state.categMealsList);
-  const { loading, meals, error } = mealsList;
-  console.log('loading', loading, meals);
-  const loadingOrError = () => (
-    loading ? <Loading /> : <h3>{error}</h3>
-  );
-  useEffect(() => {
-    dispatch(getAllMeals());
-  }, [dispatch]);
+  const { meals } = mealsList;
   // useEffect(() => {
-  //   dispatch(getByCategory(filterCategory));
-  // }, [filterCategory]);
+  //   dispatch(getByCategory());
+  // }, [filterCategory !== 'All']);
+  console.log('meals Home', meals);
   return (
-    <div className="home">
-      <Navbar />
-      <section className="meals-list">
-        <div className="meals-div">
-          {
-            meals.length > 0
-              ? meals.map((obj) => (
-                <Meal
-                  key={obj.idMeal}
-                  id={obj.idMeal}
-                  name={obj.strMeal}
-                  img={obj.strMealThumb}
-                />
-              ))
-              : loadingOrError()
-          }
-        </div>
-      </section>
-    </div>
+    <section className="meals-list">
+      <div className="meals-div">
+        {
+          meals.map((obj) => (
+            <Meal
+              key={obj.idMeal}
+              id={obj.idMeal}
+              name={obj.strMeal}
+              img={obj.strMealThumb}
+            />
+          ))
+        }
+      </div>
+    </section>
   );
 };
 Home.propTypes = {
