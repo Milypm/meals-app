@@ -1,61 +1,89 @@
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Navbar from '../containers/Navbar';
+import '../styles/mealDetails.css';
 
-const MealDetails = (props) => {
-  const { details } = props;
+const MealDetails = () => {
+  const detailsList = useSelector((state) => state.detailsList.details);
+  // console.log('detailsList', detailsList);
   const {
-    name,
-    img,
-    country,
-    type,
-    recipe,
-    youtube,
-  } = details;
-  // const ytsplit = youtube.split('');
-  // const yt = ytsplit.reverse();
-  // const ytID = yt.slice(0, 13).join('');
+    strArea,
+    strCategory,
+    strMeal,
+    strInstructions,
+    strMealThumb,
+    strYoutube,
+    strIngredient1,
+    strIngredient2,
+    strIngredient3,
+    strIngredient4,
+    strIngredient5,
+    strIngredient6,
+    strIngredient7,
+    strIngredient8,
+    strIngredient9,
+    strIngredient10,
+    strIngredient11,
+    strIngredient12,
+    strIngredient13,
+    strIngredient14,
+    strIngredient15,
+    strIngredient16,
+    strIngredient17,
+    strIngredient18,
+    strIngredient19,
+    strIngredient20,
+  } = detailsList[0];
+  const ingredients = [
+    strIngredient1,
+    strIngredient2,
+    strIngredient3,
+    strIngredient4,
+    strIngredient5,
+    strIngredient6,
+    strIngredient7,
+    strIngredient8,
+    strIngredient9,
+    strIngredient10,
+    strIngredient11,
+    strIngredient12,
+    strIngredient13,
+    strIngredient14,
+    strIngredient15,
+    strIngredient16,
+    strIngredient17,
+    strIngredient18,
+    strIngredient19,
+    strIngredient20,
+  ];
+  ingredients.filter((i) => i !== null);
+  ingredients.filter((i) => i !== '');
   return (
     <div className="mealDetails">
       <Navbar />
       <section className="mealDetails-section">
-        <h2 className="mealDetails-title">{name}</h2>
-        <p className="mealDetails-country">
-          `Origin: $
-          {country}
-          `
+        <h2 className="mealDetails-title">{strMeal}</h2>
+        <div className="type-origin-div">
+          <p className="mealDetails-type">{strCategory}</p>
+          <p className="mealDetails-country">{strArea}</p>
+        </div>
+        <img src={strMealThumb} alt={strMeal} />
+        <div className="ings-recipe-div">
+          {
+            ingredients.map((i) => (
+              <ul key={i}>
+                <li>{i}</li>
+              </ul>
+            ))
+          }
+          <p className="mealDetails-recipe">{strInstructions}</p>
+        </div>
+        <p className="video-text">
+          See a video demostration
+          {' '}
+          <a href={strYoutube} target="_blank" rel="noopener noreferrer">HERE!</a>
         </p>
-        <p className="mealDetails-type">{type}</p>
-        <img src={img} alt={name} />
-        <p className="mealDetails-recipe">{recipe}</p>
-        <p className="mealDetails-youtube">{youtube}</p>
-        {/* <iframe
-          className="video-responsive"
-          width="853"
-          height="480"
-          src={`https://www.youtube.com/embed/${ytID}`}
-          frameBorder="0"
-          allow="accelerometer;
-            autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="Embedded youtube"
-        /> */}
       </section>
     </div>
   );
 };
-MealDetails.propTypes = {
-  // key: PropTypes.string.isRequired,
-  details: PropTypes.shape({
-    name: PropTypes.string,
-    img: PropTypes.string,
-    country: PropTypes.string,
-    type: PropTypes.string,
-    recipe: PropTypes.string,
-    youtube: PropTypes.string,
-  }).isRequired,
-};
-const mapStateToProps = (state) => ({
-  details: state.details,
-});
-export default connect(mapStateToProps, null)(MealDetails);
+export default MealDetails;

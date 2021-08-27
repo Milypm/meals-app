@@ -2,10 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 .navbar {
+  margin: 0;
   display: flex;
   height: 130px;
   color: #fff;
-  background: rgb(199, 170, 92);
+  background: rgb(81, 172, 156);
   font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -27,6 +28,22 @@ a {
 .title-filters h3 {
   font-family: 'Pacifico', Verdana, Geneva, Tahoma, sans-serif;
   font-size: 40px;
+}
+
+.home-categ-div {
+  width: 78%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.home-link {
+  font-size: 22px;
+}
+
+.home-link:hover {
+  font-weight: 600;
+  opacity: 0.8;
 }
 
 .filter-form {

@@ -4,10 +4,9 @@ import '../styles/home.css';
 
 const Home = () => {
   const filterCategory = useSelector((state) => state.filterCategory);
-  const mealsList = filterCategory === 'All' && filterCategory.category === undefined ? useSelector((state) => state.allMealsList)
+  const mealsList = (filterCategory === 'All' && filterCategory.category === undefined) || filterCategory.category === 'All' ? useSelector((state) => state.allMealsList)
     : useSelector((state) => state.categMealsList);
   const { meals } = mealsList;
-  console.log('meals Home', filterCategory.category, meals);
   return (
     <section className="meals-list">
       <div className="meals-div">
