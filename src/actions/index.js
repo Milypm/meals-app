@@ -15,6 +15,8 @@ import { fetchMeals, getMealByCateg, getMealDetails } from '../API/api';
 
 export const setCategory = (value) => ({ type: CATEGORY_FILTER, payload: value });
 
+const SortArray = (x, y) => x.strMeal.localeCompare(y.strMeal);
+
 export const getAllMeals = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_MEALS_REQUEST });
@@ -28,7 +30,9 @@ export const getAllMeals = () => async (dispatch) => {
       })
     ));
     await Promise.all(promises);
-    dispatch({ type: ALL_MEALS_SUCCESS, payload: mealsArr });
+    const sortedMeals = mealsArr.sort(SortArray);
+    console.log('sortedMeals', sortedMeals);
+    dispatch({ type: ALL_MEALS_SUCCESS, payload: sortedMeals });
   } catch (error) {
     dispatch({
       type: ALL_MEALS_FAIL,
@@ -43,9 +47,10 @@ export const getByCategory = (value) => async (dispatch) => {
   try {
     dispatch({ type: CATEGORY_MEALS_REQUEST });
     const arr = await getMealByCateg(value);
+    const sortedMeals = arr.sort(SortArray);
     dispatch({
       type: CATEGORY_MEALS_SUCCESS,
-      payload: arr,
+      payload: sortedMeals,
     });
   } catch (error) {
     dispatch({
@@ -59,11 +64,11 @@ export const getByCategory = (value) => async (dispatch) => {
 
 export const updateDetailsStatus = (val) => ({ type: DETAILS_STATUS, payload: val });
 
-export const passDetails = (key) => async (dispatch) => {
+export const passDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: DETAILS_REQUEST });
-    const mealDtls = await getMealDetails(key);
-    dispatch({ type: DETAILS_SUCCESS, payload: mealDtls });
+    const mealDtls = await getMealDetails(id);
+    dispatch({ type: DETAILS_SUCCESS, payload: mealDtls[0] });
   } catch (error) {
     dispatch({
       type: DETAILS_FAIL,

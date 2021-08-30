@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
-import Meal from '../components/Meal';
+import Meal from './Meal';
 import '../styles/home.css';
 
 const Home = () => {
   const filterCategory = useSelector((state) => state.filterCategory);
-  const mealsList = (filterCategory === 'All' && filterCategory.category === undefined) || filterCategory.category === 'All' ? useSelector((state) => state.allMealsList)
+  const mealsList = (filterCategory.category === 'All')
+    ? useSelector((state) => state.allMealsList)
     : useSelector((state) => state.categMealsList);
   const { meals } = mealsList;
   return (

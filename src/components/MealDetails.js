@@ -1,10 +1,21 @@
-import { useSelector } from 'react-redux';
-import Navbar from '../containers/Navbar';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCategory } from '../actions/index';
+import Navbar from './Navbar';
+import { Loading, Error } from './LoadingError';
+import corgiChef from '../assets/images/corgi-chef.jpg';
 import '../styles/mealDetails.css';
 
 const MealDetails = () => {
-  const detailsList = useSelector((state) => state.detailsList.details);
-  // console.log('detailsList', detailsList);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setCategory('All'));
+  }, []);
+  const detailsList = useSelector((state) => state.detailsList);
+  const { loading, error } = detailsList;
+  const loadingOrError = () => (
+    loading ? <Loading /> : <Error error={error} />
+  );
   const {
     strArea,
     strCategory,
@@ -32,7 +43,7 @@ const MealDetails = () => {
     strIngredient18,
     strIngredient19,
     strIngredient20,
-  } = detailsList[0];
+  } = detailsList.details;
   const ingredients = [
     strIngredient1,
     strIngredient2,
@@ -55,34 +66,50 @@ const MealDetails = () => {
     strIngredient19,
     strIngredient20,
   ];
-  ingredients.filter((i) => i !== null);
-  ingredients.filter((i) => i !== '');
+  const notNull = ingredients.filter((i) => i !== null);
+  const notEmpty = notNull.filter((i) => i !== '');
+  let n = 0;
   return (
     <div className="mealDetails">
       <Navbar />
-      <section className="mealDetails-section">
-        <h2 className="mealDetails-title">{strMeal}</h2>
-        <div className="type-origin-div">
-          <p className="mealDetails-type">{strCategory}</p>
-          <p className="mealDetails-country">{strArea}</p>
-        </div>
-        <img src={strMealThumb} alt={strMeal} />
-        <div className="ings-recipe-div">
-          {
-            ingredients.map((i) => (
-              <ul key={i}>
-                <li>{i}</li>
-              </ul>
-            ))
-          }
-          <p className="mealDetails-recipe">{strInstructions}</p>
-        </div>
-        <p className="video-text">
-          See a video demostration
-          {' '}
-          <a href={strYoutube} target="_blank" rel="noopener noreferrer">HERE!</a>
-        </p>
-      </section>
+      {
+        !loading && error === undefined
+          ? (
+            <section className="mealDetails-section">
+              <img src={corgiChef} className="corgiChef" alt="Corgi with Chef Hat Smiling" />
+              <h2 className="mealDetails-title">{strMeal}</h2>
+              <div className="type-origin-div">
+                <p className="mealDetails-type">{strCategory}</p>
+                <p className="mealDetails-country">{strArea}</p>
+              </div>
+              <img src={strMealThumb} className="mealImg" alt={strMeal} />
+              <div className="ings-recipe-div">
+                <ul className="ings-ul">
+                  <p>Ingredients:</p>
+                  {
+                    notEmpty[0] !== undefined
+                      ? notEmpty.map((i) => {
+                        const item = <li key={`ing-${n}`}>{i}</li>;
+                        n += 1;
+                        return item;
+                      })
+                      : <p />
+                  }
+                </ul>
+                <div className="recipe-div">
+                  <p>Instructions:</p>
+                  <p className="mealDetails-recipe">{strInstructions}</p>
+                </div>
+              </div>
+              <p className="video-text">
+                See a video demonstration
+                {' '}
+                <a href={strYoutube} target="_blank" rel="noopener noreferrer">HERE!</a>
+              </p>
+            </section>
+          )
+          : loadingOrError()
+      }
     </div>
   );
 };

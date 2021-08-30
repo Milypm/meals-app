@@ -1,4 +1,6 @@
-import { DETAILS_REQUEST, DETAILS_SUCCESS, DETAILS_FAIL } from '../actions/types';
+import {
+  DETAILS_REQUEST, DETAILS_SUCCESS, DETAILS_FAIL,
+} from '../actions/types';
 
 const detailsListReducer = (state = { details: [] }, action) => {
   switch (action.type) {

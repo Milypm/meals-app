@@ -26,13 +26,26 @@ body {
   padding: 0 15px;
 }
 
-.loading-div {
-  margin: 0 auto;
+.loading-div,
+.error-div {
+  margin: 150px auto;
   width: 100%;
   height: 200px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  font-size: 25px;
+  font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(219, 135, 96);
+}
+
+.error-div h3 {
+  color: rgb(107, 97, 93);
+  font-size: 23px;
+}
+
+.error-div p {
+  color: rgb(107, 97, 93);
   font-size: 20px;
 }
 
@@ -43,24 +56,24 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 50px;
-  height: 200px;
   width: 305px;
   height: 225px;
 }
 
 .meal-title {
   position: absolute;
-  top: 40px;
+  top: 0;
   background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  background: rgba(0, 0, 0, 0.5);
   color: #f1f1f1;
   width: 50%;
-  transition: .5s ease;
+  height: auto;
+  transition: 0.5s ease;
   opacity: 0;
   text-align: center;
   padding: 20px;
   font-size: 20.5px;
-  border-radius: 230px;
+  border-radius: 50px;
 }
 
 .mealObj img {

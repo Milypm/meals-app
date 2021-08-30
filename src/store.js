@@ -15,15 +15,16 @@ const rootReducer = combineReducers({
   detailsStatus: detailsStatusReducer,
 });
 
-const initialState = {
-  filterCategory: 'All',
-};
+const initialState = {};
 
 const middleware = [thunk];
 
-const store = createStore(
-  rootReducer,
-  initialState,
-  composeWithDevTools(applyMiddleware(...middleware)),
-);
-export default store;
+const createTestStore = () => {
+  const store = createStore(
+    rootReducer,
+    initialState,
+    composeWithDevTools(applyMiddleware(...middleware)),
+  );
+  return store;
+};
+export default createTestStore;
