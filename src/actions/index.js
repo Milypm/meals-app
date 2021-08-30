@@ -31,7 +31,6 @@ export const getAllMeals = () => async (dispatch) => {
     ));
     await Promise.all(promises);
     const sortedMeals = mealsArr.sort(SortArray);
-    console.log('sortedMeals', sortedMeals);
     dispatch({ type: ALL_MEALS_SUCCESS, payload: sortedMeals });
   } catch (error) {
     dispatch({
