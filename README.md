@@ -30,7 +30,6 @@ You can visit the live project here: [MealsApp!](https://mpm-meals-app.herokuapp
 3. Go to the repo root directory
 4. On your terminal, run 'npm start'
 5. Browser should open automatically, or open [http://localhost:3000](http://localhost:3000)
-6. You should see "Calculator App" on the browser screen
 
 ## Tests
 - Go to the project's root directory
