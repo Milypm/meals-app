@@ -10,6 +10,10 @@ It is possible to filter the meals by category, and to redirect to a particular 
 ## Live Project
 You can visit the live project here: [MealsApp!](https://mpm-meals-app.herokuapp.com//)
 
+## Project Presentation
+You can check a video presentation for the project here: [gist](https://gist.github.com/Milypm/3250d5edfc28a04f852b98dfcd364e4f)
+- On the first link is the presentation, on the second, I talk about some of the main concepts I used regarding React/Redux
+
 ## Built With
 - npm
 - React
@@ -50,4 +54,4 @@ Visit [issues' section](https://github.com/Milypm/meals-app/issues)
 Give a :star2: if you like this project!
 
 ## License
-This project is [MIT Licensed]()
+This project is [MIT Licensed](https://github.com/Milypm/meals-app/blob/feature/app/LICENSE)
