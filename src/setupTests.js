@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+
 global.fetch = require('jest-fetch-mock');
 
 const initialStateOne = {
