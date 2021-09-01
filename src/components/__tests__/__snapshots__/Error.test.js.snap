@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error component renders correctly 1`] = `
+<div
+  className="error-div"
+>
+  <h3>
+    Sorry, we couldn't display the information :( Try again please
+  </h3>
+</div>
+`;

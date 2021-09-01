@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Meal component Meal component renders correctly 1`] = `
+<a
+  className="mealObj"
+  href="/recipe-details/53014"
+  onClick={[Function]}
+>
+  <h3
+    className="meal-title"
+  >
+    Pizza Express Margherita
+  </h3>
+  <img
+    alt="Pizza Express Margherita"
+    src="https://www.themealdb.com/images/media/meals/x0lk931587671540.jpg"
+  />
+</a>
+`;

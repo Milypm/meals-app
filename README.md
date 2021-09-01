@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+![](https://img.shields.io/badge/Microverse-blueviolet)
+# Meals App with React-Redux
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![img_1](https://user-images.githubusercontent.com/54684961/131413666-ce7f2408-7f01-49d8-9c02-d400933ae219.png)
+![img_2](https://user-images.githubusercontent.com/54684961/131413701-9094363b-6e4b-4eb2-b270-9c8604398dbe.png)
 
-## Available Scripts
+Web application that uses the [TheMealDB](https://www.themealdb.com/api.php) API, and displays general meals' information.
+It is possible to filter the meals by category, and to redirect to a particular meal's details page.
 
-In the project directory, you can run:
+## Live Project
+You can visit the live project here: [MealsApp!](https://mpm-meals-app.herokuapp.com/)
 
-### `yarn start`
+## Project Presentation
+You can check a video presentation for the project here: [gist](https://gist.github.com/Milypm/3250d5edfc28a04f852b98dfcd364e4f)
+- On the first link is the presentation, on the second, I talk about some of the main concepts I used regarding React/Redux
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Built With
+- npm
+- React
+- create-react-app
+- fetch
+- Redux
+- react-redux
+- JavaScript
+- JSX
+- CSS
+- Jest
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## How To Run It (Locally)
+1. It's recommended to use Git's latest version
+2. Clone or download the repo: [meals-app](https://github.com/Milypm/meals-app) to your local system
+    - Click on the "Code" green button and copy 'HTTPS URL'
+    - **On an empty folder** on your local system, open the command-line: `git clone 'HTTPS URL'`
+3. Go to the repo root directory
+4. On your terminal, run 'npm start'
+5. Browser should open automatically, or open [http://localhost:3000](http://localhost:3000)
 
-### `yarn test`
+## Tests
+- Go to the project's root directory
+- Run 'npm test'
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Author
+**Mily Puente** :woman_technologist:
+- GitHub: [@Milypm](https://github.com/Milypm)
+- LinkedIn: [Mily Puente](https://www.linkedin.com/in/milypuentem/)
+- AngelList: [Mily Puente](https://angel.co/u/mily-puente)
+- Twitter: [@MilyPuente](https://twitter.com/MilyPuente)
+ 
+## Contribute :point_left:
+Any advice and suggestion for improvement are more than welcome.
+Visit [issues' section](https://github.com/Milypm/meals-app/issues)
 
-### `yarn build`
+## Show Your Support
+Give a :star2: if you like this project!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+This project is [MIT Licensed](https://github.com/Milypm/meals-app/blob/feature/app/LICENSE)

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading and Error components Loading component renders correctly 1`] = `
+<div
+  className="loading-div"
+>
+  <h3>
+    Loading
+  </h3>
+  <span
+    className="css-8gz6np"
+  >
+    <span
+      className="css-xya1tf"
+    />
+    <span
+      className="css-v4vq26"
+    />
+    <span
+      className="css-kqipwe"
+    />
+    <span
+      className="css-def0y6"
+    />
+    <span
+      className="css-1cfbd8g"
+    />
+    <span
+      className="css-w0j3t9"
+    />
+    <span
+      className="css-h7en48"
+    />
+    <span
+      className="css-mg8it5"
+    />
+  </span>
+</div>
+`;
