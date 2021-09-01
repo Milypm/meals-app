@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllMeals, getByCategory, updateDetailsStatus } from '../actions/index';
 import Navbar from './Navbar';
-import { Loading, Error } from './LoadingError';
+import { Loading, Error } from '../components/LoadingError';
 import Home from './Home';
 import '../styles/home.css';
 

@@ -1,10 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { setCategory } from '../actions/index';
+import PropTypes from 'prop-types';
 import '../styles/navbar.css';
 
-const Filter = () => {
-  const dispatch = useDispatch();
-  const filterCategory = useSelector((state) => state.filterCategory);
+const Filter = (props) => {
+  const { onChangeHandler, currentCateg } = props;
   const categoryFilter = [
     'All',
     'Beef',
@@ -25,7 +23,7 @@ const Filter = () => {
   return (
     <form className="filter-form">
       <label className="label-filter">Category:</label>
-      <select className="select-filter" id="category" name="category" onChange={(e) => dispatch(setCategory(e.target.value))} value={filterCategory.category}>
+      <select className="select-filter" id="category" name="category" onChange={(e) => onChangeHandler(e)} value={currentCateg}>
         {
           categoryFilter.map((cat) => (
             <option key={cat} className="option-filter" value={cat}>
@@ -36,5 +34,13 @@ const Filter = () => {
       </select>
     </form>
   );
+};
+Filter.defaultProps = {
+  onChangeHandler: () => {},
+  currentCateg: '',
+};
+Filter.propTypes = {
+  onChangeHandler: PropTypes.func,
+  currentCateg: PropTypes.string,
 };
 export default Filter;

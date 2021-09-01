@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Start from '../components/Start';
-import MealDetails from '../components/MealDetails';
+import Start from '../containers/Start';
+import MealDetails from '../containers/MealDetails';
 
 const Routes = () => (
   <BrowserRouter>
     <Switch>
       <Route exact path="/" component={Start} />
-      <Route exact path="/recipe-details" component={MealDetails} />
+      <Route exact path="/recipe-details/:id" component={MealDetails} />
     </Switch>
   </BrowserRouter>
 );

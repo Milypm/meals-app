@@ -8,7 +8,7 @@ Web application that uses the [TheMealDB](https://www.themealdb.com/api.php) API
 It is possible to filter the meals by category, and to redirect to a particular meal's details page.
 
 ## Live Project
-You can visit the live project here: [MealsApp!](https://mpm-meals-app.herokuapp.com//)
+You can visit the live project here: [MealsApp!](https://mpm-meals-app.herokuapp.com/)
 
 ## Project Presentation
 You can check a video presentation for the project here: [gist](https://gist.github.com/Milypm/3250d5edfc28a04f852b98dfcd364e4f)

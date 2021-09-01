@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCategory } from '../actions/index';
 import Navbar from './Navbar';
-import { Loading, Error } from './LoadingError';
+import { Loading, Error } from '../components/LoadingError';
 import corgiChef from '../assets/images/corgi-chef.jpg';
 import '../styles/mealDetails.css';
 
